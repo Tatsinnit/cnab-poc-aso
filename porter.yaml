@@ -100,13 +100,13 @@ uninstall:
 credentials:
   - name: SUBSCRIPTION_ID
     type: string
-    env: foo_AZURE_SUBSCRIPTION_ID
+    env: POC_AZURE_SUBSCRIPTION_ID
   - name: CLIENT_ID
-    env: Foo_AZURE_CLIENT_ID
+    env: POC_AZURE_CLIENT_ID
   - name: TENANT_ID
-    env: Foo_AZURE_TENANT_ID
+    env: POC_AZURE_TENANT_ID
   - name: CLIENT_SECRET
-    env: Foo_AZURE_CLIENT_SECRET
+    env: POC_AZURE_CLIENT_SECRET
   - name: kubeconfig
     path: /root/.kube/config
 
