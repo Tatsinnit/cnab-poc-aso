@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.0
+version: 0.1.1
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -142,22 +142,22 @@ custom:
         displayName: Subscription ID
         displayOrder: 2
         uitype: Microsoft.Common.TextBox
-        bladename: Azure Service Principles
+        bladename: Azure
       - name: CLIENT_ID
         tooltip: "The Azure SP client or app id used by the Azure Service Operator"
         displayName: Client or app ID
         displayOrder: 2
         uitype: Microsoft.Common.TextBox
-        bladename: Azure Service Principles
+        bladename: Azure
       - name: TENANT_ID
         tooltip: "The Azure tenant id used by the Azure Service Operator"
         displayName: Azure tenant ID
         displayOrder: 2
         uitype: Microsoft.Common.TextBox
-        bladename: Azure Service Principles        
+        bladename: Azure        
       - name: CLIENT_SECRET
         tooltip: "The Azure SP client secret or password used by the Azure Service Operator"
         displayName: Azure client secret
         displayOrder: 2
         uitype: Microsoft.Common.TextBox
-        bladename: Azure Service Principles        
+        bladename: Azure        
