@@ -45,11 +45,6 @@ install:
       manifests:
         - "https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml"
       wait: true
-  #  - exec:
-  #     description: "Install Cert manager."
-  #     command: bash
-  #     flags:
-  #       c: "'kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml'"
    - exec:
       description: "***STEP-2:*** Check if the cert-manager pods are ready."
       command: bash
