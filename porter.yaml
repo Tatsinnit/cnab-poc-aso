@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.0
+version: 0.1.1
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -45,11 +45,6 @@ install:
       manifests:
         - "https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml"
       wait: true
-  #  - exec:
-  #     description: "Install Cert manager."
-  #     command: bash
-  #     flags:
-  #       c: "'kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml'"
    - exec:
       description: "***STEP-2:*** Check if the cert-manager pods are ready."
       command: bash
@@ -117,3 +112,52 @@ credentials:
 #    description: "Test cliend parameter."
 #    default: $AZURE_CLIENT_ID
 #    type: string
+
+# The following values are consumed by the Azure Portal and turned into visual blades and UI elements.
+custom:
+  com.azure.creatuidef:
+    blades:
+      Kubernetes:
+        displayOrder: 1
+        label: Kubernetes Properties
+      Azure:
+        displayOrder: 2
+        label: Azure Service Principals
+    elements:
+      - name: kubeconfig
+        tooltip: A valid Kubernetes config for the Kuberentes cluster to install Kubeflow
+        displayName: Kubernetes Configuration
+        displayOrder: 1
+        uitype: Microsoft.Common.TextBox
+        bladename: Kubernetes
+      - name: deploymentTime
+        hide: true
+      - name: cnab_installation_name
+        displayOrder: 1
+        tooltip: The CNAB Bundle installation name
+        displayName: Installation Name
+        bladename: Kubernetes
+      - name: SUBSCRIPTION_ID
+        tooltip: "The id for the Azure subscription to use"
+        displayName: Subscription ID
+        displayOrder: 2
+        uitype: Microsoft.Common.PasswordBox
+        bladename: Azure
+      - name: CLIENT_ID
+        tooltip: "The Azure SP client or app id used by the Azure Service Operator"
+        displayName: Client or app ID
+        displayOrder: 2
+        uitype: Microsoft.Common.PasswordBox
+        bladename: Azure
+      - name: TENANT_ID
+        tooltip: "The Azure tenant id used by the Azure Service Operator"
+        displayName: Azure tenant ID
+        displayOrder: 2
+        uitype: Microsoft.Common.PasswordBox
+        bladename: Azure        
+      - name: CLIENT_SECRET
+        tooltip: "The Azure SP client secret or password used by the Azure Service Operator"
+        displayName: Azure client secret
+        displayOrder: 2
+        uitype: Microsoft.Common.PasswordBox
+        bladename: Azure        
