@@ -141,23 +141,23 @@ custom:
         tooltip: "The id for the Azure subscription to use"
         displayName: Subscription ID
         displayOrder: 2
-        uitype: Microsoft.Common.TextBox
+        uitype: Microsoft.Common.PasswordBox
         bladename: Azure
       - name: CLIENT_ID
         tooltip: "The Azure SP client or app id used by the Azure Service Operator"
         displayName: Client or app ID
         displayOrder: 2
-        uitype: Microsoft.Common.TextBox
+        uitype: Microsoft.Common.PasswordBox
         bladename: Azure
       - name: TENANT_ID
         tooltip: "The Azure tenant id used by the Azure Service Operator"
         displayName: Azure tenant ID
         displayOrder: 2
-        uitype: Microsoft.Common.TextBox
+        uitype: Microsoft.Common.PasswordBox
         bladename: Azure        
       - name: CLIENT_SECRET
         tooltip: "The Azure SP client secret or password used by the Azure Service Operator"
         displayName: Azure client secret
         displayOrder: 2
-        uitype: Microsoft.Common.TextBox
+        uitype: Microsoft.Common.PasswordBox
         bladename: Azure        
