@@ -17,6 +17,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+      # Lowercase my github ownername.
+      - name: Set Environment Variables
+        run: |
+          OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+          echo "REPO-OWNER=${OWNER}" >> $GITHUB_ENV
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
      
@@ -39,4 +46,4 @@ jobs:
       # Note the below automatically sets the registry to the local GH registry of the org name. 
       # Currently, for pure gitops reconstructing this runtime setting will require looking at the repository owner of the commit
         run: |
-          porter publish --registry ghcr.io/${{ github.repository_owner }} --debug
+          porter publish --registry ghcr.io/${{ env.REPO-OWNER }} --debug
