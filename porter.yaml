@@ -39,7 +39,22 @@ install:
   #     description: "Using kubectl in an exec to demonstrate it works."
   #     command: bash
   #     flags:
-  #       c: "'kubectl get no'"
+  #       c: "'kubectl get no'" 
+   - kubernetes:
+      description: "***PRE-REQ:*** Install operator-lifecycle-manager CRD."
+      manifests:
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/crds.yaml"
+      wait: true
+   - kubernetes:
+      description: "***PRE-REQ:*** Install operator-lifecycle-manager (olm)."
+      manifests:
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/olm.yaml"
+      wait: true
+   - kubernetes:
+      description: "***PRE-REQ:*** Install operator resource and namespaces."
+      manifests:
+        - "https://operatorhub.io/install/azure-service-operator.yaml"
+      wait: true
    - kubernetes:
       description: "***STEP-1:*** Create the Issuer and Certificate cert-manager resources."
       manifests:
