@@ -2,6 +2,10 @@
 
 ToDo: Add more:
 
+* Detail about the project.
+* Key attributeds and goal this achievs.
+* non goals.
+
 This is an POC for the ASO bundle that porter has created to get you started! 
 
 # Contents
