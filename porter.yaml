@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.1
+version: 0.1.2
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -24,7 +24,6 @@ install:
   #     arguments:
   #       - install
    - exec:
-      command: bash
       description: "testing the internal env"
       suppress-output: false
       flags:
@@ -41,43 +40,42 @@ install:
   #     flags:
   #       c: "'kubectl get no'" 
    - kubernetes:
-      description: "***PRE-REQ:*** Install operator-lifecycle-manager CRD."
+      description: "Install operator-lifecycle-manager CRD."
       manifests:
-        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/crds.yaml"
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml"
       wait: true
    - kubernetes:
-      description: "***PRE-REQ:*** Install operator-lifecycle-manager (olm)."
+      description: "Install operator-lifecycle-manager (olm)."
       manifests:
-        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/olm.yaml"
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml"
       wait: true
    - kubernetes:
-      description: "***PRE-REQ:*** Install operator resource and namespaces."
+      description: "Install operator resource and namespaces."
       manifests:
         - "https://operatorhub.io/install/azure-service-operator.yaml"
       wait: true
+  #  - kubernetes:
+  #     description: "***STEP-1:*** Create the Issuer and Certificate cert-manager resources."
+  #     manifests:
+  #       - "https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml"
+  #     wait: true
+  #  - exec:
+  #     description: "***STEP-2:*** Check if the cert-manager pods are ready."
+  #     command: bash
+  #     flags:
+  #       c: "'kubectl rollout status -n cert-manager deploy/cert-manager-webhook'"
+  #  - kubernetes:
+  #     description: "***STEP-3:*** Create the Issuer and Certificate cert-manager resources."
+  #     manifests:
+  #       - /cnab/app/manifests/Issuerandcertmanager.yaml
+  #     wait: true
    - kubernetes:
-      description: "***STEP-1:*** Create the Issuer and Certificate cert-manager resources."
-      manifests:
-        - "https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml"
-      wait: true
-   - exec:
-      description: "***STEP-2:*** Check if the cert-manager pods are ready."
-      command: bash
-      flags:
-        c: "'kubectl rollout status -n cert-manager deploy/cert-manager-webhook'"
-   - kubernetes:
-      description: "***STEP-3:*** Create the Issuer and Certificate cert-manager resources."
-      manifests:
-        - /cnab/app/manifests/Issuerandcertmanager.yaml
-      wait: true
-   - kubernetes:
-      description: "***STEP-4:*** Create azureoperatorsettings within the operators Namespace."
+      description: "Create azureoperatorsettings within the operators Namespace."
       manifests:
         - /cnab/app/manifests/azureoperatorsettings.yaml
       wait: true
    - exec:
-      description: "***FINAL STEP:*** Azure Service Operator pod running in your cluster."
-      command: bash
+      description: "Azure Service Operator pod running in your cluster."
       flags:
         c: "'kubectl get pods -n operators'"
   #  - exec:
@@ -93,14 +91,14 @@ install:
   #       c: "'helm3 version'"
 upgrade:
   - exec:
-      description: "World 2.0"
+      description: "Upgrade"
       command: ./helpers.sh
       arguments:
         - upgrade
 
 uninstall:
   - exec:
-      description: "Uninstall Hello World"
+      description: "Uninstall"
       command: ./helpers.sh
       arguments:
         - uninstall

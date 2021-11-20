@@ -2,15 +2,15 @@
 set -euo pipefail
 
 install() {
-  echo Hello World
+  echo Install Azure Service Oeprator
 }
 
 upgrade() {
-  echo World 2.0
+  echo No upgrade feature available
 }
 
 uninstall() {
-  echo Goodbye World
+  echo No uninstall feature available
 }
 
 # Call the requested function and pass the arguments as-is
