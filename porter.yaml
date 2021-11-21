@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.5
+version: 0.1.6
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -23,12 +23,12 @@ install:
   #     command: ./helpers.sh
   #     arguments:
   #       - install
-  #  - exec:
-  #     description: "testing the internal env"
-  #     command: bash
-  #     suppress-output: false
-  #     flags:
-  #       c: '"env"'
+   - exec:
+      description: "Print the internal env"
+      command: bash
+      suppress-output: false
+      flags:
+        c: '"env"'
   #  - exec:
   #     command: bash
   #     description: "testing the internal env"
