@@ -42,16 +42,19 @@ install:
   #       c: "'kubectl get no'" 
    - exec:
       description: "Install operator-lifecycle-manager CRD."
+      command: bash
       suppress-output: false
       flags:
         c: "'kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml'"
    - exec:
       description: "Install operator-lifecycle-manager (olm)."
+      command: bash
       suppress-output: false
       flags:
         c: "'kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml'"
    - exec:
       description: "Install operator-lifecycle-manager (olm)."
+      command: bash
       suppress-output: false
       flags:
         c: "'kubectl apply -f https://operatorhub.io/install/azure-service-operator.yaml'"
@@ -92,6 +95,7 @@ install:
       wait: true
    - exec:
       description: "Azure Service Operator pod running in your cluster."
+      command: bash
       flags:
         c: "'kubectl get pods -n operators'"
   #  - exec:
