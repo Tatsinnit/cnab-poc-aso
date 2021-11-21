@@ -40,38 +40,20 @@ install:
   #     command: bash
   #     flags:
   #       c: "'kubectl get no'" 
-   - exec:
+   - kubernetes:
       description: "Install operator-lifecycle-manager CRD."
-      command: bash
-      suppress-output: false
-      flags:
-        c: "'kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml'"
-   - exec:
+      manifests:
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml"
+      wait: true
+   - kubernetes:
       description: "Install operator-lifecycle-manager (olm)."
-      command: bash
-      suppress-output: false
-      flags:
-        c: "'kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml'"
-   - exec:
-      description: "Install operator-lifecycle-manager (olm)."
-      command: bash
-      suppress-output: false
-      flags:
-        c: "'kubectl apply -f https://operatorhub.io/install/azure-service-operator.yaml'"
-  #  - kubernetes:
-  #     description: "Install operator-lifecycle-manager CRD."
-  #     manifests:
-  #       - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml"
-  #     wait: true
-  #  - kubernetes:
-  #     description: "Install operator-lifecycle-manager (olm)."
-  #     manifests:
-  #       - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml"
-  #     wait: true
-  #  - kubernetes:
-  #     description: "Install operator resource and namespaces."
-  #     manifests:
-  #       - "https://operatorhub.io/install/azure-service-operator.yaml"
+      manifests:
+        - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml"
+      wait: true
+   - kubernetes:
+      description: "Install operator resource and namespaces."
+      manifests:
+        - "https://operatorhub.io/install/azure-service-operator.yaml"
   #     wait: true
   #  - kubernetes:
   #     description: "***STEP-1:*** Create the Issuer and Certificate cert-manager resources."
