@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.10
+version: 0.1.11
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -97,6 +97,7 @@ install:
       wait: true
    - exec:
       description: "Azure Service Operator pod running in your cluster."
+      command: bash
       flags:
         c: "'kubectl get pods -n operators'"
   #  - exec:
