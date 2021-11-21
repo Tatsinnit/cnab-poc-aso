@@ -3,13 +3,10 @@ set -euo pipefail
 
 install() {
   echo "Install Azure Service Oeprator"
-  echo "Install OLM."
-  curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/install.sh -o install.sh
-  chmod +x install.sh
-  ./install.sh v0.19.1
-  # kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/crds.yaml
-  # # echo Install OLM
-  # kubectl apply -f https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/olm.yaml
+  echo "Install CRDs"
+  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/crds.yaml'
+  echo "Install OLM"
+  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/olm.yaml'
   echo "OLM installation complete"
 }
 
