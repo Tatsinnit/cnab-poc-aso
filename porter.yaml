@@ -4,7 +4,7 @@
 # Uncomment out the sections below to take full advantage of what Porter can do!
 
 name: cnab-poc-aso
-version: 0.1.14
+version: 0.1.15
 description: "A Porter bundle that install ASO (Azure service Operator)."
 # TODO: update the registry to your own, e.g. myregistry
 registry: tatsat/
@@ -55,26 +55,28 @@ install:
   #     command: bash
   #     flags:
   #       c: "'kubectl apply -f https://operatorhub.io/install/azure-service-operator.yaml'"
-  #  - exec:
-  #     description: "Install Operator Lifecycle Manager."
-  #     command: ./helpers.sh
-  #     arguments:
-  #       - install
-   - kubernetes:
-        description: "Install operator-lifecycle-manager CRD."
-        manifests:
-          - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml"
-        wait: true
-   - kubernetes:
-        description: "Install operator-lifecycle-manager (olm)."
-        manifests:
-          - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml"
-        wait: true
-   - kubernetes:
-      description: "Install operator resource and namespaces."
-      manifests:
-        - "https://operatorhub.io/install/azure-service-operator.yaml"
-      wait: true
+   - exec:
+      description: "Install Operator Lifecycle Manager."
+      command: ./helpers.sh
+      arguments:
+        - install-olm
+
+  #  - kubernetes:
+  #       description: "Install operator-lifecycle-manager CRD."
+  #       manifests:
+  #         - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml"
+  #       wait: true
+  #  - kubernetes:
+  #       description: "Install operator-lifecycle-manager (olm)."
+  #       manifests:
+  #         - "https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml"
+  #       wait: true
+  #  - kubernetes:
+  #     description: "Install operator resource and namespaces."
+  #     manifests:
+  #       - "https://operatorhub.io/install/azure-service-operator.yaml"
+  #     wait: true
+
   #  - kubernetes:
   #     description: "***STEP-1:*** Create the Issuer and Certificate cert-manager resources."
   #     manifests:
