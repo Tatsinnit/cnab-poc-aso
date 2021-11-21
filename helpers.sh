@@ -4,9 +4,9 @@ set -euo pipefail
 install() {
   echo "Install Azure Service Oeprator"
   echo "Install CRDs"
-  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/crds.yaml'
+  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml'
   echo "Install OLM"
-  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.19.1/olm.yaml'
+  kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/olm.yaml'
   echo "OLM installation complete"
 }
 
