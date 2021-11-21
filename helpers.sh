@@ -5,7 +5,7 @@ install-olm() {
   echo "Install Azure Service Oeprator"
   curl -L https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/install.sh -o install.sh
   chmod +x install.sh
-  ./install.sh v0.19.1
+  ./install.sh v0.18.3
   # echo "Install CRDs"
   # kubectl apply -f 'https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.3/crds.yaml'
   # echo "Install OLM"
